@@ -1,0 +1,38 @@
+{% extends "Auctions/dashboard.html" %}
+{% block content %}
+<script>
+
+function new_window_bid(id) {
+
+    window.open("localhost:8000/auction-portal/"+id+"/","Auction-Portal")
+    //
+}
+
+</script>
+    <a href="{% url 'index' %}"><i class="fas fa-plus-circle fa-3x bu1"></i></a>
+        {% for auction_bidders in view_participating %}
+            <div class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-7">
+                                    <br><br>
+                                    <div class="card userdiscopy">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6 "><br>
+                                                    <p><span class="cad1"><i class="fas fa-gavel"></i> &nbsp; {{ auction_bidders.auction }} </span>  </p><br>
+                                                    <p><span class="cad2">Creator :</span><br> {{ auction_bidders.creator }}</p><br>
+                                                    <p><span class="cad2">Scheduled Date and Time :<br></span> {{ auction_bidders.scheduled_time }}</p>
+                                                    <p><button class="cad2" onclick="new_window_bid({{ auction_bidders.auction.id}})">Enter<br></button></p>                                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        {% endfor %}
+
+{% endblock %}

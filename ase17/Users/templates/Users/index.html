@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>This is the index Page</h1>
+    {% if user.is_authenticated %}
+        <h1> Heloooooooooooooooooooooooo {{ user.username }}</h1>
+     {% else %}
+        <h1> Not Loooooooooooooged Innnnnnnnnnnnnnnnnn </h1>
+    {% endif %}
+</body>
+</html>

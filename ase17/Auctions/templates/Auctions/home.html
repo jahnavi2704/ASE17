@@ -1,0 +1,205 @@
+{% extends "Auctions/base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <br><br><br><br>
+
+    <div class="container">
+      <div class="row justify-content-md-center">
+         <div class="headingcd">
+           Register. Participate. Bid. Win
+        </div>
+      </div>
+    </div>
+
+    <br><br><br><br><br><br><br>
+
+    <div id="movedown">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Electronics' %}">
+                <div class="hexagon">
+                    <div class="hexTop"></div>
+                    <div class="hexBottom"></div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Automobiles' %}">
+              <div class="hexagon2">
+                  <div class="hexTop2"></div>
+                <div class="hexBottom2"></div>
+              </div>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Fashion' %}">
+              <div class="hexagon3">
+                  <div class="hexTop3"></div>
+                <div class="hexBottom3"></div>
+              </div>
+             </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Sports' %}">
+              <div class="hexagon4">
+                  <div class="hexTop4"></div>
+                <div class="hexBottom4"></div>
+              </div>
+            </a>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Art' %}">
+              <div class="hexagon5">
+                  <div class="hexTop5"></div>
+                <div class="hexBottom5"></div>
+              </div>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Books' %}">
+              <div class="hexagon6">
+                  <div class="hexTop6"></div>
+                <div class="hexBottom6"></div>
+              </div>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Furniture' %}">
+              <div class="hexagon7">
+                <div class="hexTop7"></div>
+                <div class="hexBottom7"></div>
+              </div>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Antiques' %}">
+                <div class="hexagon8">
+                  <div class="hexTop8"></div>
+                <div class="hexBottom8"></div>
+              </div>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Musical Equipment' %}">
+              <div class="hexagon9">
+                  <div class="hexTop9"></div>
+                <div class="hexBottom9"></div>
+              </div>
+             </a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Industrial Equipment' %}">
+              <div class="hexagon10">
+                <div class="hexTop10"></div>
+                <div class="hexBottom10"></div>
+              </div>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Gaming' %}">
+              <div class="hexagon11">
+                <div class="hexTop11"></div>
+                <div class="hexBottom11"></div>
+              </div>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Stationary' %}">
+              <div class="hexagon12">
+                  <div class="hexTop12"></div>
+                <div class="hexBottom12"></div>
+              </div>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Utensils' %}">
+              <div class="hexagon14">
+                  <div class="hexTop14"></div>
+                <div class="hexBottom14"></div>
+              </div>
+            </a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Precious Gems' %}">
+              <div class="hexagon13">
+                  <div class="hexTop13"></div>
+                <div class="hexBottom13"></div>
+              </div>
+             </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Pet Stuff' %}">
+              <div class="hexagon15">
+                  <div class="hexTop15"></div>
+                <div class="hexBottom15"></div>
+              </div>
+             </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'display-auction' 'Miscellaneous' %}">
+              <div class="hexagon16">
+                <div class="hexTop16"></div>
+                <div class="hexBottom16"></div>
+              </div>
+             </a>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <br><br><br><br><br><br>
+
+    <div class="container">
+      <div class="row justify-content-md-center">
+         <div class="headingcd">
+           Why Choose Us?
+        </div>
+      </div>
+    </div>
+
+    <br><br><br><br>
+
+
+            <div class="container">
+              <div class="row justify-content-center">
+                    <div class="col-sm-3">
+                        <center><i class="far fa-check-circle fa-5x"></i><p class="cbig"><br><br><span  class="c1">Highly Qualified Service</span><br>
+                            <br>Being part of a semester project which aims to be scaled to industry level, quality service is always the first priority. </p>
+                        </center>
+                    </div>
+                  <div class="col-sm-3 ">
+                        <div>
+                            <center><i class="far fa-laugh-beam fa-5x"></i><p class="cbig"><br><br><span class="c1">Awesome Design</span><br>
+                             <br>   Website has been designed by an art enthusiast keeping in mind what looks pleasing to the eyes of the user.
+                            </p>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 ">
+                        <center><i class="far fa-times-circle fa-5x"></i></i><p class="cbig"><br><br><span class="c1">Hassle Free Experience</span><br>
+                            <br>Creating a hassle free auction experience is the primary goal of the web application Bid 'n' Win.</p>
+                        </center>
+                    </div>
+
+                </div>
+              </div>
+        </div>
+    <br><br><br><br><br><br>
+{% endblock content %}

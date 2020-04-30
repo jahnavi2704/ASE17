@@ -1,0 +1,105 @@
+{% extends "Auctions/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+    {% if auction_formset.errors or auction_details.errors %}
+        {% for errors in auction_details.errors %}
+          {{ errors }}
+        {% endfor %}
+    {% endif %}
+    <br>
+    <br>
+
+    <div class="gradientdiv"><br><br>
+        <div class="container-contact100">
+            <div class="wrap-contact100">
+                <div class="container">
+                  <div class="row justify-content-md-center">
+                     <div class="headingcd">
+                      Create Auctions Here
+                    </div>
+                  </div>
+                </div>
+                <br><br><br>
+                <form method="POST" class="contact100-form" action="{% url 'create-auction' %}" enctype="multipart/form-data">
+                    <!-- Create A drop down containing all categories (hardcode it) -->
+                    {% csrf_token %}
+                    <div class="form-set">
+                        <div class="wrap-input100" >
+                        <span class="label-input100">Category:</span>
+                        {{ auction_details.category}}
+
+                        </div>
+                        <div class="wrap-input100" >
+                                        <span class="label-input100">Scheduled Date and Time:</span>
+                                        <!--<input class="input100" type="text" name="name" placeholder="Name...">-->
+                                        {{ auction_details.scheduled_date |attr:"placeholder:M/D/Y HR:MI"|add_class:'input100'}}
+                                        <span class="focus-input100"></span>
+                        </div>
+                    </div>
+                    <div>
+                        {% for errors in item.errors %}
+                                {{ errors }}
+                        {% endfor %}
+                        {{ auction_formset.management_form }}
+                        {% for item in auction_formset %}
+                            <div class="link-formset">
+                                <div class="wrap-input100" >
+                                    <span class="label-input100">Item Name</span>
+                                    <!--<input class="input100" type="text" name="name" placeholder="Name...">-->
+                                    {{ item.item_name |attr:"placeholder:Item Name..."|add_class:'input100'}}
+                                    <span class="focus-input100"></span>
+                                </div>
+
+                                <div class="wrap-input100">
+                                    <span class="label-input100">Base Price</span>
+                                    {{ item.base_price |attr:"placeholder:Base Price... "|add_class:'input100'}}
+                                    <span class="focus-input100"></span>
+                                </div>
+
+                                <div class="wrap-input100">
+                                    <span class="label-input100">Description</span>
+                                    {{ item.description |attr:"placeholder:Small Description... "|add_class:'input100'}}
+                                    <span class="focus-input100"></span>
+                                </div>
+
+                                <div class="wrap-input100">
+                                    <span class="label-input100">Keywords</span>
+                                    {{ item.keywords |attr:"placeholder:Few Words about the item... "|add_class:'input100'}}
+                                    <span class="focus-input100"></span>
+                                </div>
+
+                                 <div class="form-group">
+                                                {{ item.item_pic }}
+                                                <!--<input type="text" class="form-control" placeholder="Enter Your Address *" value="" />-->
+                                 </div>
+                                </div>
+
+                        {% endfor %}
+                    </div>
+                    <div class="container-contact100-form-btn">
+                        <div class="wrap-contact100-form-btn">
+                            <div class="contact100-form-bgbtn"></div>
+                           <!-- <input type="submit" value="Create Auction" class="contact100-form-btn">-->
+                            <button class="contact100-form-btn" type="submit">
+                                Create Auction
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><br><br>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.link-formset').formset({
+        addText: 'Add Item',
+        deleteText: ' Remove Item',
+    });
+</script>
+{% endblock %}
+
+
+

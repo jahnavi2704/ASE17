@@ -1,0 +1,102 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+     <link href="{% static 'Auctions/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'Auctions/paper-dashboard.css' %}" rel="stylesheet">
+    <link href="{% static 'Auctions/dashboard.css' %}" rel="stylesheet">
+    <!--  Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="{% url 'index' %}" class="simple-text">
+                    <img src="{% static 'Auctions/home_logo-01.png' %}" width="200" height="80" alt="">
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="{% url 'dashboard' %}">
+                        <p><i class="fas fa-user fa-xs"></i>&nbsp;User Profile</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'view-created' %}">
+                        <p><i class="fas fa-gavel"></i>&nbsp;Created Auctions</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'view-joined' %}">
+                        <p><i class="fas fa-rupee-sign"></i>&nbsp;Participating Auctions</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p><i class="fas fa-bell"></i>&nbsp;Notifications</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p><i class="fas fa-shopping-cart"></i>&nbsp;Cart</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">DASHBOARD</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="{% url 'index' %}">
+                                <p><i class="fas fa-home"></i>&nbsp;HOME</p>
+                            </a>
+                        </li>
+						<li>
+                            <a href="{% url 'logout' %}">
+								<p>LOGOUT</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

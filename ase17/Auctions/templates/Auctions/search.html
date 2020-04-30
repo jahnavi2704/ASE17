@@ -1,0 +1,70 @@
+{% extends "Auctions/base.html" %}
+{% block content %}
+
+    <br><br>
+            <div class="container">
+              <div class="row justify-content-md-center">
+                 <div class="headingcd">
+                   Search Results
+                </div>
+              </div>
+            </div>
+            <br><br><br>
+    <center class="sh mr-5">Filter Base Search:</center> <br><br><br>
+    <center>
+    
+        <div class="slidecontainer">
+            <input type="range" min="1" max="100000" value="0" class="slider" id="myRange"> <br><br>
+            <p class="searchvalue">Base Price: <span id="demo"></span> &nbsp; &nbsp; </p><br>
+        </div>
+            <button type="submit" style="width:200px;height:50px;background-color:#d3d3d3;border-radius:50px;border:2px solid #BCA450;font-family:'Raleway', sans-serif;font-size:20px; " onclick="applyFilter({{search_result|safe}})">Search</button>
+    
+    </center>
+
+            <br><br><br>
+    {% if message %}
+        <center>
+            <i class="fas fa-frown fa-7x"></i><br><br><br>
+            <span class="error">{{ message }}</span>
+        </center>
+            <br><br>
+    {% else %}
+         <div id="1">
+         {% for disp_auctions in search_result %}
+                 <div class="row justify-content-md-center" >
+                          <div class="frame col-md-8">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="cd1"> {{ disp_auctions.item_name }}</h5><br>
+                                                <span class="cd2"> Description: </span> <br><span class="cd3">{{ disp_auctions.description | wordwrap:10 }}</span><br><br>
+                                                <span class="cd2"> Base Price: </span> <br><span class="cd3">{{ disp_auctions.item_price }}</span> <br><br>
+                                                               <span class="cd2">Matched Keywords:</span>
+                                                                {% for match in disp_auctions.matches %}
+                                                                    <span class="cd3">{{ match }} ,</span>
+                                                                {% endfor %}
+                                            <br><br>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                           <br> <center> <img class="idimg" src="{{ disp_auctions.item_url }}"> </center>
+                                        </div>
+                                    </div>
+                                </div>
+                          </div>
+                        </div>
+                <br><br><br>
+            {% endfor %}
+            </div>
+
+            <script>
+            var filter_list;
+            </script>
+
+            <div id="2">
+
+            </div>
+
+
+    {% endif %}
+{% endblock %}

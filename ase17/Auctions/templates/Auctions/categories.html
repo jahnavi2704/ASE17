@@ -1,0 +1,38 @@
+{% extends "Auctions/base.html" %}
+{% load static %}
+{% block content %}
+            <br><br>
+            <div class="container">
+              <div class="row justify-content-md-center">
+                 <div class="headingcd">
+                   Auctions In {{ category }}
+                </div>
+              </div>
+            </div>
+            <br><br><br>
+        {% if message %}
+            <center>
+            <i class="fas fa-frown fa-7x"></i><br><br><br>
+            <span class="error">{{ message }}</span>
+            </center>
+            <br><br>
+        {% else %}
+            {% for disp_auctions in query_set %}
+                <div class="container cdd1">
+                        <div class="row justify-content-md-center">
+                          <div class="frame col-md-8">
+                            <h5 class="cd1"> | {{ disp_auctions }}</h5><br><br>
+                             <span class="cd2"> Date and Time: </span> <br><span class="cd3">{{ disp_auctions.scheduled_date }}</span> <br><br>
+                              <span class="cd2"> Creator of the Auction: </span> <br><span class="cd3">{{ disp_auctions.creator.user.username }}</span> <br>
+
+                              <br><br>
+                              <a href="{% url 'display-items' category disp_auctions.itemset.id %}" class="btn btn-dark b2" >View Items</a>
+                              <a href="{% url 'join' disp_auctions.id %}"><i class="fas fa-plus-circle fa-3x b1"></i></a>
+
+                          </div>
+                        </div>
+                </div>
+                <br><br><br>
+            {% endfor %}
+        {% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Profile Page</title>
+
+</head>
+<body>
+    <p>
+        <h4>UserName  : {{ request.user.username }}</h4>
+        <h4>{{ request.user.profile.display_pic.url }}</h4>
+        <img src="{{ request.user.profile.display_pic.url }}">
+
+    </p>
+</body>
+</html>

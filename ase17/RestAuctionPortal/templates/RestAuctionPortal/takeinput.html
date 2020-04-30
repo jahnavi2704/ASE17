@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>serializer test</title>
+</head>
+<body>
+
+    <h1 id="item_data"></h1>
+
+    <h4>Current Bid Is : </h4>
+    <h1 id="c_bid" ></h1>
+
+    <p> 
+    <div id="post-form">
+        <form method='POST' >
+         {% csrf_token %}
+         <input type="submit" value="BID" onclick="set_flag(1)">
+        </form>
+    </div>
+    <p> 
+
+    <p style="display:none" id="bid_increment">0</p>
+    <p style="display:none" id="current_bid">0</p>
+    <p style="display:none" id="set_flag">0</p>
+
+</body>
+
+<div>Registration closes in <span id="time">01:00</span> minutes!</div>
+
+<p>
+<h5>List of all items</h5>
+<h1>pavan list all items using js mujhse nai hoga</h1>
+
+</p>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+var flagset = 0;
+var current_bid = 0;
+var bid_increment = 0;
+
+
+var clist = {{itemlist | safe }}
+
+for (var key in clist )
+    console.log(clist[key])
+
+
+function set_flag(flag) {
+    //document.getElementById("set_flag").innerHTML = flag;
+    flagset = flag;
+}
+
+function get_bid_value() {
+
+    console.log(document.getElementById("set_flag").innerHTML)
+    /*
+    if (document.getElementById("set_flag").innerHTML == 0){
+     return String(Number(document.getElementById("c_bid").innerHTML))
+    }
+
+    return String(Number(document.getElementById("bid_increment").innerHTML) 
+                + Number(document.getElementById("c_bid").innerHTML) )
+    */
+
+    if (flagset==0){
+        return String(Number(current_bid)  )
+    }
+
+    else{
+        return String( Number(current_bid) + Number(bid_increment) )
+    }
+}
+
+setInterval(
+function bidding() {
+    console.log("create post is working!") // sanity check
+    
+    $.ajax({
+        url : "{% url 'testform' auction_id %}", // the endpoint
+        type : "POST", // http method
+        contentType: "application/json",
+        datatype : "json",
+        // data sent with the post request                
+
+        data: JSON.stringify({
+            
+            bid : get_bid_value()
+        }),
+
+
+        // handle a successful response
+        success : function(json) {
+            $('#post-text').val(''); // remove the value from the input
+            console.log(json); // log the returned json to the console
+            console.log("success"); // another sanity check
+
+            var myElement = document.getElementById("c_bid");
+            myElement.innerHTML = json.current_bid
+            current_bid = json.current_bid;
+
+            var item_data = document.getElementById("item_data")
+            item_data.innerHTML = clist[json.current_item_no].item_name
+
+           // document.getElementById("bid_increment").innerHTML = json.bid_increment
+            bid_increment = json.bid_increment;
+
+            set_flag(0);
+
+            if (json.time_reset){
+                //var fiveMinutes = 60 * 1,
+                //display = $('#time');
+                //startTimer(fiveMinutes, display);
+            }
+
+        },
+
+        // handle a non-successful response
+        error : function(xhr,errmsg,err) {
+            $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+        }
+        
+    });
+},1000)
+
+
+$('#post-form').on('submit', function(event){
+    event.preventDefault();
+    console.log("form submitted!")  // sanity check
+    //bidding()
+});
+
+
+</script>
+</html>

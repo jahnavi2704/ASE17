@@ -1,0 +1,187 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bid 'n' Win</title>
+      <link rel="shortcut icon" href="https://mbtskoudsalg.com/images/gavel-images-png-3.png" type="image/x-icon">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'Auctions/base.css' %}?1422585377">
+        <link rel="stylesheet" type="text/css" href="{% static 'Auctions/home.css' %}?1422585377">
+        <link rel="stylesheet" type="text/css" href="{% static 'Users/register.css' %}?1422585377">
+        <link rel="stylesheet" type="text/css" href="{% static 'Users/login.css' %}?1422585377">
+      <link rel="stylesheet" type="text/css" href="{% static 'Auctions/createAuction.css' %}?1422585377">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Kaushan+Script" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+
+  </head>
+  <body>    <br>
+    <nav class="navbar navbar-light navbar-expand-md bg-gradient-light justify-content-md-center justify-content-start mynav">
+      <a class="navbar-brand d-md-none d-inline" href="">Bid 'n' Win</a>
+        <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar2">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          <nav class="navbar navbar-light bg-light">
+            <a href="#">
+                <img src="{% static 'Auctions/home_logo-01.png' %}" width="200" height="80" alt="">
+            <a>
+          </nav>
+
+        <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
+          <ul class="navbar-nav mx-auto text-md-center text-left">
+              <li class="nav-item">
+                  <a class="nav-link homeelement" id="homeelement-1"  href="{% url 'index' %}">HOME <hr class="hr1"> </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link homeelement" id="homeelement-2"  href="#movedown">EXPLORE <hr class="hr1"> </a>
+              </li>
+              {% if user.is_authenticated %}
+                   <li class="nav-item">
+                      <a class="nav-link homeelement" id="homeelement-5"  href="{% url 'dashboard' %}">WELCOME<hr class="hr1"> </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link homeelement"  id="homeelement-3" href="{% url 'logout' %}">LOGOUT <hr class="hr1"> </a>
+                  </li>
+              {% else %}
+                  <li class="nav-item">
+                      <a class="nav-link homeelement" id="homeelement-5"  href="{% url 'login' %}">LOGIN <hr class="hr1"> </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link homeelement" id="homeelement-3"  href="{% url 'register' %}">REGISTER <hr class="hr1"> </a>
+                  </li>
+              {% endif %}
+              <form class="form-inline my-2 my-lg-0" id="homeelement-4" method="get" action="{% url 'search' %}">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" required >
+                <input class="btn btn-outline-dark my-2 my-sm-0" type="submit" value="SEARCH">
+              </form>
+          </ul>
+      </div>
+    </nav>
+
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+<footer class="page-footer font-small blue-grey lighten-5">
+
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-center mt-5">
+
+      <!-- Grid row -->
+      <div class="row mt-3 dark-grey-text">
+
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+          <!-- Content -->
+          <h6 class="text-uppercase font-weight-bold">Bid 'n' Win </h6>
+          <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>Our Venture is an initative to connect Auctioneers and Bidders in a hassle-free and convenient manner to facilitate the live auction procedure.</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Links  </h6>
+          <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <a class="dark-grey-text" href="{% url 'index' %}">HOME</a>
+          </p>
+          <p>
+            <a class="dark-grey-text" href="#!">EXPLORE</a>
+          </p>
+          <p>
+
+            <a class="dark-grey-text" href="{% url 'about' %}">ABOUT</a>
+          </p>
+          <p>
+            <a class="dark-grey-text" href="{% url 'policy' %}">POLICIES</a>
+
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">FOLLOW US</h6>
+          <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>
+                <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>&nbsp;&nbsp;<a href="#"><i class="fab fa-instagram fa-2x"></i></a></p>
+            <p>
+                <a href="#"><i class="fab fa-github-square fa-2x"></i></a>&nbsp;&nbsp;<a href="#"><i class="fab fa-linkedin fa-2x"></i></a></p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Contact </h6>
+          <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <i class="fa fa-home mr-3"></i> Sri City, India</p>
+          <p>
+            <i class="fa fa-envelope mr-3"></i> info@example.com</p>
+          <p>
+            <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
+
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center text-black-50 py-3">© 2018 Copyright:
+      <a class="dark-grey-text" href="">Bid 'N' Win</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+function applyFilter(django_list) {
+  var list = django_list
+  document.getElementById('1').style.display = "none"
+  filter_val = Number(output.innerHTML)
+  var key=0
+  var di = document.getElementById('2')
+  while (key < django_list.length) {
+    if (Number(django_list[key]['item_price']) < filter_val){
+      di.innerHTML += "<div class='row justify-content-md-center'><div class='frame col-md-8'><div class='container'><div class='row'><div class='col-md-6'><h5 class='cd1' > " + django_list[key]['item_name'] + " </h5><br><span class='cd2' > Description: </span> <br><span class='cd3'>" + django_list[key]['item_description'] + "</span><br><br><span class='cd2' id='2_bp'> Base Price:  </span> <br><span class='cd3'>" + django_list[key]['item_price'] + "</span> <br><br><span class='cd2' >Matched Keywords:</span><span class='cd3' > " + django_list[key]['matches'] + " ,</span><br><br></div><div class='col-md-6'><br> <center> <img class='idimg' src='" + django_list[key]['item_url'] + "'> </center></div></div></div></div></div><br><br><br>"
+      //$( "#2" ).append( "<div class='row justify-content-md-center'><div class='frame col-md-8'><div class='container'><div class='row'><div class='col-md-6'><h5 class='cd1' > "+django_list[key]['item_name']+" </h5><br><span class='cd2' > Description: </span> <br><span class='cd3'>{{ disp_auctions.description | wordwrap:10 }}</span><br><br><span class='cd2' id='2_bp'> Base Price: </span> <br><span class='cd3'>{{ disp_auctions.item_price }}</span> <br><br><span class='cd2' >Matched Keywords:</span>{% for match in disp_auctions.matches %}<span class='cd3' >{{ match }} ,</span>{% endfor %}<br><br></div><div class='col-md-6'><br> <center> <img class='idimg' src='{{ disp_auctions.item_url }}'> </center></div></div></div></div></div><br><br><br>" );
+    }
+    key=key+1
+  }
+}
+</script>
+
+
+
+    </body>
+</html>

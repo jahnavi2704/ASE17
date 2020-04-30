@@ -1,0 +1,31 @@
+{% extends "Auctions/dashboard.html" %}
+{% block content %}
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 col-md-7">
+                        <br><br>
+                        <div class="card userdis">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6 userdis1">
+                                        <img class="idimg" src="{{ request.user.profile.display_pic.url }}">
+                                       <p> <a href="{% url 'UpdateProfile' %}" class="btn btn-dark ed1">Edit Profile</a> </p>
+                                    </div>
+                                    <div class="col-md-6 userdis2 ">
+                                        <p> <span class="userfont1"> Username:</span> <br> {{ user.username }}</p>
+                                        <p> <span class="userfont1"> Email id:</span> <br> {{ user.email }} </p>
+                                        <p> <span class="userfont1"> Address:</span> <br> {{ posts.address }}</p>
+                                        <p> <span class="userfont1"> Mobile number:</span> <br> {{ posts.phone_no }}</p>
+                                        <p> <span class="userfont1"> Card number:</span> <br> {{ posts.card_no }}</p>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+{% endblock %}
